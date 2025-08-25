@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectrophotometric estimation of copper ions from given solution of CuSO4</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"/>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #1e1f26, #2e2f38);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin: 20px 0;
+            border-bottom: 2px solid #8e44ad;
+            padding-bottom: 10px;
+        }
+        
+        /* Experiment Section */
+        .experiment-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .experiment-info {
+            margin-bottom: 20px;
+        }
+        
+        .experiment-steps {
+            margin-top: 30px;
+        }
+        
+        .step {
+            display: none;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #8e44ad;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .step.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .step h3 {
+            color: #8e44ad;
+            margin-bottom: 15px;
+        }
+        
+        .step-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin: 15px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .audio-container {
+            margin: 15px 0;
+            background-color: #f1e9fb;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+        
+        button {
+            background-color: #8e44ad;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        
+        button:hover {
+            background-color: #a65fc3;
+        }
+        
+        button:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        /* Quiz Section */
+        .quiz-container {
+            display: none;
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .quiz-question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        
+        .quiz-options {
+            margin-left: 20px;
+        }
+        
+        .quiz-options label {
+            display: block;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+        
+        .quiz-options input {
+            margin-right: 10px;
+        }
+        
+        .quiz-results {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f4fc;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .quiz-results h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 15px 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .experiment-container, .quiz-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Chemistry Lab Experiments</h1>
+            <p>Interactive learning platform for chemistry students</p>
+        </header>
+        
+        <div class="experiment-container">
+            <div class="experiment-info">
+                <h2>pH-metric Titration of HCl solution against standard Hydroxide Solution </h2>
+                <p>Aim: To determine the strength of Hydrochloric acid by pH meter.</p>
+            </div>
+            
+            <div class="experiment-steps">
+                <!-- Step 1 -->
+                <div class="step active" id="step1">
+                    <h3>Step 1: Collect All the materials requires for the experiment.</h3>
+                    <img src="C:\Users\Shruti\OneDrive\Desktop\Chemistry\images\exp3_steps\exp3_step2.png" alt="Lab equipment" class="step-image" style="width: 300px; height: auto;">
+                    <div class="audio-container">
+                        <p>Audio explanation:</p>
+                        <audio controls>
+                            <source src="C:\Users\Shruti\OneDrive\Desktop\Chemistry\images\exp3_steps\exp3_step1_a.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <p>Apparatus: pH meter, electrode, beaker, pipette, burette</p>
+                    <p>Chemicals: Hydrochloric acid (HCI), sodium hydroxide (NaOH) buffer of pH = 4 and 9.2</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="step" id="step2">
+                    <h3>Step 2: Setting up The pH meter </h3>
+                    <img src="C:\Users\Shruti\OneDrive\Desktop\Chemistry\images\exp3_steps\exp3_step1.png" alt="Preparing burette" class="step-image" style="width: 300px; height: auto;">
+                    <div class="audio-container">
+                        <p>Audio explanation:</p>
+                        <audio controls>
+                            <source src="C:\Users\Shruti\OneDrive\Desktop\Chemistry\images\exp3_steps\exp3_step2_a.wav" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <p>0.1N NaOH solution is provided. HCl solution of unknown strength is provided. Switch on the instrument and wait for 10-15 minutes so that machine gets warmed up Prepare the buffer solution by adding buffer tablets of pH=4 and pH 9.2 in 100 ml of water separately. Wash the electrode with distilled water. Then, dip the electrode in the buffer solution (pH = 4) taken in a beaker, so that the electrode immersed to the solution properly,adjust the pH to 4. Wash the electrode with distilled water and standardize the pH meter using basic buffer solution pH=9.2 .</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="step" id="step3">
+                    <h3>Step 3: Standardization of pH meter with electronic buffer.</h3>
+                    <img src="https://images.unsplash.com/photo-1565227917875-1c517f5a1e8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Preparing acid solution" class="step-image" style="width: 300px; height: auto;">
+                    <div class="audio-container">
+                        <p>Audio explanation:</p>
+                        <audio controls>
+                            <source src="C:\Users\Shruti\OneDrive\Desktop\Chemistry\images\exp3_steps\exp3_step3_a.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <p>Standardization of pH meter can also be done with the help of electronic and buffer which are integral part of the instrument. Output of the electronic buffer 7.00 is joined to the input of pH meter and the asymmetric knob is adjusted till display reads 7.00 . Output of the electronic buffer 4.00 and 9.2 are then joined to the input of pH meter and the asymmetric knob and slope knob are adjusted till display reads 4.00 and 9.2 respectively.</p>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="step" id="step4">
+                    <h3>Step 4: pH-metric Titration</h3>
+                    <img src="C:\Users\Shruti\OneDrive\Desktop\Chemistry\images\exp3_steps\exp3_step4.png" alt="Performing titration" class="step-image" style="width: 300px; height: auto;">
+                    <div class="audio-container">
+                        <p>Audio explanation:</p>
+                        <audio controls>
+                            <source src="C:\Users\Shruti\OneDrive\Desktop\Chemistry\images\exp3_steps\exp3_step4_a.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <p>pH-metric Titration: Clean the electrode with distilled water and wipe them with tissue paper or filter paper. Take 10 mL. of HCl solution in a 100 ml beaker and add small amount of conductivity water so that the electrode is immersed in it. Note down the reading on the pH meter which is the pH of the HCl solution.   </p>
+                    <p>--</p>
+                    <p>Set the burette with NaOH solution. Add Iml NaOH solution from the burette, shake the solution well and note the corresponding pH values. Near the end point, there will be a sharp increase in the pH value. Process is continued until at least five readings are taken after the end point</p>
+                </div>
+                
+                <!-- Step 5 -->
+                <div class="step" id="step5">
+                    <h3>Step 5: Plotting Graph ∆pH/∆V </h3>
+                    <img src="C:\Users\Shruti\OneDrive\Desktop\Chemistry\images\exp3_steps\exp3_step5.png" alt="Recording results" class="step-image" style="width: 300px; height: auto;">
+                    <div class="audio-container">
+                        <p>Audio explanation:</p>
+                        <audio controls>
+                            <source src="C:\Users\Shruti\OneDrive\Desktop\Chemistry\images\exp3_steps\exp3_step5_a.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <p>Repeat the experiment to obtain the fine titration value by recording the change in pH for each 0.1 ml of NaOH near the end point or equivalence point Piot a graph of ∆pH/∆V versus volume of NaOH. Thus you have completed your experiment.</p>
+                </div>
+                
+                <div class="nav-buttons">
+                    <button id="prevBtn" disabled>Previous</button>
+                    <button id="nextBtn">Next</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quiz Section -->
+        <div class="quiz-container" id="quizContainer">
+            <h2>Quiz: Test Your Understanding</h2>
+            
+            <div class="quiz-question">
+                <p>1.What is the principle of pH metric titration?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q1" value="a"> Measurement of conductivity</label>
+                    <label><input type="radio" name="q1" value="b">Measurement of temperature change</label>
+                    <label><input type="radio" name="q1" value="c">Measurement of pH change during titration</label>
+                    <label><input type="radio" name="q1" value="d">Measurement of mass</label>
+                </div>
+            </div>
+            
+            <div class="quiz-question">
+                <p>2.What is plotted in a pH metric titration curve?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q2" value="a"> pH vs temperature</label>
+                    <label><input type="radio" name="q2" value="b">pH vs volume of acid</label>
+                    <label><input type="radio" name="q2" value="c">pH vs volume of base added</label>
+                    <label><input type="radio" name="q2" value="d"> pH vs pressure</label>
+                </div>
+            </div>
+            
+            <div class="quiz-question">
+                <p>3.Choose the correct option : The equivalence point is the point at which the amount of acid equals the amount of base.</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q3" value="a">False</label>
+                    <label><input type="radio" name="q3" value="b">True</label>
+                    <label><input type="radio" name="q3" value="c">Not Sure</label>
+                    <label><input type="radio" name="q3" value="d">None of the above</label>
+                </div>
+            </div>
+            
+            <div class="quiz-question">
+                <p>4. Which of the following represents the equivalence point in the graph of pH Vs volume of titrant?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q4" value="a"> Point at the highest pH</label>
+                    <label><input type="radio" name="q4" value="b">  Point at the greatest magnitude of the slope of the curve</label>
+                    <label><input type="radio" name="q4" value="c">  Point at the lowest pH</label>
+                    <label><input type="radio" name="q4" value="d">  Point at the least magnitude of the slope of the curve</label>
+                </div>
+            </div>
+            
+            <button id="submitQuiz">Submit Quiz</button>
+            <button id="exit"><a href="file:///C:/Users/Shruti/OneDrive/Desktop/Chemistry/page2.html">Go Back</a></button>
+            
+            <div class="quiz-results" id="quizResults">
+                <h3>Quiz Results</h3>
+                <p id="scoreText">You scored 0 out of 4 (0%)</p>
+                <p id="feedbackText"></p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script>
+        // Step navigation functionality
+        const steps = document.querySelectorAll('.step');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const quizContainer = document.getElementById('quizContainer');
+        let currentStep = 0;
+        
+        // Show the first step initially
+        showStep(currentStep);
+        
+        // Next button click handler
+        nextBtn.addEventListener('click', () => {
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                showStep(currentStep);
+            } else {
+                // Last step - show quiz
+                quizContainer.style.display = 'block';
+                window.scrollTo({
+                    top: quizContainer.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+        
+        // Previous button click handler
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 0) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        });
+        
+        // Function to show current step and update buttons
+        function showStep(stepIndex) {
+            steps.forEach((step, index) => {
+                if (index === stepIndex) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+            
+            // Update button states
+            prevBtn.disabled = stepIndex === 0;
+            nextBtn.textContent = stepIndex === steps.length - 1 ? 'Start Quiz' : 'Next';
+        }
+        
+        // Quiz functionality
+        const submitBtn = document.getElementById('submitQuiz');
+        const quizResults = document.getElementById('quizResults');
+        const scoreText = document.getElementById('scoreText');
+        const feedbackText = document.getElementById('feedbackText');
+        
+        // Correct answers
+        const correctAnswers = {
+            q1: 'c',
+            q2: 'c',
+            q3: 'b',
+            q4: 'b'
+        };
+        
+        submitBtn.addEventListener('click', () => {
+            let score = 0;
+            const totalQuestions = Object.keys(correctAnswers).length;
+            
+            // Check each question
+            for (const question in correctAnswers) {
+                const selectedOption = document.querySelector(`input[name="${question}"]:checked`);
+                
+                if (selectedOption && selectedOption.value === correctAnswers[question]) {
+                    score++;
+                }
+            }
+            
+            // Calculate percentage
+            const percentage = Math.round((score / totalQuestions) * 100);
+            
+            // Show results
+            scoreText.textContent = `You scored ${score} out of ${totalQuestions} (${percentage}%)`;
+            
+            // Provide feedback
+            if (percentage >= 75) {
+                feedbackText.textContent = 'Excellent work! You have a strong understanding of the experiment.';
+            } else if (percentage >= 50) {
+                feedbackText.textContent = 'Good effort! Review the experiment steps to improve your understanding.';
+            } else {
+                feedbackText.textContent = 'Keep practicing! Consider going through the experiment steps again.';
+            }
+            
+            quizResults.style.display = 'block';
+            window.scrollTo({
+                top: quizResults.offsetTop,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
