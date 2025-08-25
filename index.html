@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Virtual Chemistry Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1e1f26, #2e2f38);
+      color: #fff;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cover {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      max-width: 600px;
+      text-align: center;
+      position: relative;
+    }
+
+    .cover h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .cover p {
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+      color: #ccc;
+    }
+
+    .enterlab {
+      padding: 12px 24px;
+      font-size: 1rem;
+      color: #fff;
+      background: #8e44ad;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .enterlab a{
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .enterlab:hover {
+      background: #a65fc3;
+    }
+
+    .flask {
+      position: absolute;
+      width: 60px;
+      opacity: 0.8;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    .flask1 {
+        height: 200px;
+        width: 200px;
+        top: -150px;
+        left: -90px;
+        animation-delay: 0s;
+    }
+
+    .flask2 {
+        height: 200px;
+        width: 200px;
+      bottom: -80px;
+      right: -130px;
+      animation-delay: 0s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(5deg);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .cover h1 {
+        font-size: 2rem;
+      }
+      .cover p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cover">
+    <h1>Virtual Chemistry Lab</h1>
+    <p><b>Dive into dynamic simulations and hands-on virtual experiments in chemistry.</b></p>
+    <button class="enterlab"><a href="file:///C:/Users/Shruti/OneDrive/Desktop/Chemistry/page2.html">Enter Lab</a></button>
+
+    <!-- Floating flask icons -->
+    <img src="C:\Users\Shruti\OneDrive\Desktop\Chemistry\images\flask1.png" class="flask flask1" alt="Flask" />
+    <img src="C:\Users\Shruti\OneDrive\Desktop\Chemistry\images\flask2.png" class="flask flask2" alt="Flask" />
+  </div>
+</body>
+</html>
